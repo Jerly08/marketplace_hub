@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <h1 className="text-3xl font-bold mb-4 text-gray-800">Product Not Found</h1>
-        <p className="mb-8 text-gray-600">The product you're looking for doesn't exist or has been removed.</p>
+        <p className="mb-8 text-gray-600">The product you&apos;re looking for doesn&apos;t exist or has been removed.</p>
         <Link href="/products" className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors inline-block">
           Browse All Products
         </Link>
@@ -134,10 +134,16 @@ export default async function ProductPage({ params }: { params: { id: string } }
                 <Link href={`/product/${product.id}`} key={product.id} className="group">
                   <div className="bg-white rounded-lg shadow-md overflow-hidden group-hover:shadow-lg transition-shadow">
                     <div className="p-4 h-48 flex items-center justify-center bg-gray-50">
-                      <img
+                      <Image
                         src={product.image}
                         alt={product.title}
-                        className="max-h-40 max-w-full object-contain group-hover:scale-105 transition-transform"
+                        width={150}
+                        height={150}
+                        style={{
+                          maxHeight: '160px',
+                          objectFit: 'contain'
+                        }}
+                        className="max-w-full group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <div className="p-4">

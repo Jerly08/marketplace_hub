@@ -10,12 +10,12 @@ export const metadata = {
 };
 
 export default async function DealsPage() {
-  const products = await getProducts();
+  const productsData = await getProducts();
   
   // For demo purposes, let's simulate that deals are products with a rating > 4.3
-  // In a real app, deals would be determined by the backend
-  const dealProducts = (products.length > 0 ? products : fallbackProducts)
-    .filter(product => product.rating.rate > 4.3);
+  const products = productsData.length > 0 
+    ? productsData.filter(product => product.rating.rate > 4.3)
+    : fallbackProducts.filter(product => product.rating.rate > 4.3);
   
   return (
     <div className="min-h-screen py-8">
@@ -26,21 +26,24 @@ export default async function DealsPage() {
           <FiChevronRight size={16} className="mx-2" />
           <span className="text-gray-700">Special Deals</span>
         </nav>
-
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Special Deals</h1>
-          <p className="text-gray-600">
-            Limited time offers on our top-rated products
-          </p>
+        
+        {/* Banner */}
+        <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg shadow-lg p-6 md:p-10 mb-10">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            Special Deals & Offers
+          </h1>
+          <p className="opacity-90 mb-4">Special deals for a limited time only. Don&apos;t miss out!</p>
+          <Link 
+            href="/products" 
+            className="bg-white text-indigo-600 hover:bg-indigo-50 px-6 py-2 rounded-md font-semibold inline-block"
+          >
+            View All Products
+          </Link>
         </div>
         
-        <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-6 rounded-lg shadow-md mb-8">
-          <h2 className="text-2xl font-bold mb-2">Save up to 50% off!</h2>
-          <p className="opacity-90 mb-4">Special deals for a limited time only. Don't miss out!</p>
-        </div>
-
-        <Suspense fallback={<div className="text-center py-10">Loading deals...</div>}>
-          <ProductGrid products={dealProducts} title="Featured Deals" />
+        {/* Products */}
+        <Suspense fallback={<div>Loading deals...</div>}>
+          <ProductGrid products={products} title="Our Best Deals" />
         </Suspense>
       </div>
     </div>

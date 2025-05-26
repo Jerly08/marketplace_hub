@@ -24,7 +24,7 @@ const HeroBanner = () => {
               </Link>
               <Link href="/deals" 
                 className="bg-transparent border-2 border-white hover:bg-white/10 px-6 py-3 rounded-lg font-semibold transition-colors">
-                Today's Deals
+                Today&apos;s Deals
               </Link>
             </div>
           </div>

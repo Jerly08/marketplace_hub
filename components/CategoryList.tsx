@@ -8,8 +8,13 @@ interface CategoryListProps {
   categories: string[];
 }
 
+// Define a type for the category images mapping
+type CategoryImageMap = {
+  [category: string]: string;
+};
+
 // Category images with standardized filenames (using SVG instead of JPG)
-const categoryImages = {
+const categoryImages: CategoryImageMap = {
   "electronics": "/images/categories/electronics.svg",
   "jewelery": "/images/categories/jewelry.svg",
   "men's clothing": "/images/categories/mens-clothing.svg",
@@ -28,8 +33,8 @@ const formatCategoryName = (category: string) => {
 
 const getCategoryImageUrl = (category: string) => {
   // First try to get from our mapping
-  if ((categoryImages as any)[category]) {
-    return (categoryImages as any)[category];
+  if (category in categoryImages) {
+    return categoryImages[category];
   }
   
   // If not found, create a standardized filename based on the category name
@@ -62,10 +67,11 @@ const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
                   fill
                   style={{ objectFit: 'cover' }}
                   className="group-hover:scale-105 transition-transform duration-300"
-                  onError={(e: any) => {
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                     // Fallback to default image if the category image fails to load
-                    e.target.onerror = null;
-                    e.target.src = defaultImage;
+                    const target = e.currentTarget;
+                    target.onerror = null;
+                    target.src = defaultImage;
                   }}
                 />
               </div>
