@@ -15,9 +15,17 @@ const formatCategoryName = (category: string) => {
     .join(' ');
 };
 
+// Define the params type for this page
+type CategoryParams = {
+  params: {
+    category: string;
+  };
+};
+
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
-  // Params object is already resolved, so we can safely use it directly
+export async function generateMetadata(
+  { params }: CategoryParams
+): Promise<Metadata> {
   const categoryName = params.category;
   const formattedName = formatCategoryName(categoryName);
   
@@ -36,8 +44,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function CategoryPage({ params }: { params: { category: string } }) {
-  // Params object is already resolved, so we can safely use it directly
+export default async function CategoryPage(
+  { params }: CategoryParams
+) {
   const categoryName = params.category;
   const products = await getProductsByCategory(categoryName);
   

@@ -9,8 +9,17 @@ import type { Metadata } from 'next';
 
 export const revalidate = 3600; // Revalidate this page at most every hour
 
+// Define the params type for this page
+type ProductParams = {
+  params: {
+    id: string;
+  };
+};
+
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: ProductParams
+): Promise<Metadata> {
   const product = await getProduct(parseInt(params.id));
   
   if (!product) {
@@ -38,7 +47,9 @@ export async function generateStaticParams() {
   return productIds;
 }
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage(
+  { params }: ProductParams
+) {
   const productId = parseInt(params.id);
   const product = await getProduct(productId);
   
@@ -115,12 +126,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
                 </p>
               </div>
 
-              <ProductActions 
-                productId={product.id} 
-                onAddToCart={(id) => console.log('Add to cart', id)}
-                onAddToWishlist={(id) => console.log('Add to wishlist', id)}
-                onShare={(id) => console.log('Share', id)}
-              />
+              <ProductActions productId={product.id} />
             </div>
           </div>
         </div>
