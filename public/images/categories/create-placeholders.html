@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Placeholder Images</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .image-container { margin-bottom: 30px; border: 1px solid #ddd; padding: 10px; background: white; }
+    h1, h2 { color: #333; }
+    .instructions { background: #ffffcc; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+    svg { display: block; margin-bottom: 10px; }
+    pre { background: #f1f1f1; padding: 10px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Category Placeholder Images</h1>
+    
+    <div class="instructions">
+      <h2>Instructions:</h2>
+      <p>Right-click each image below and select "Save Image As..." to save it with the correct filename:</p>
+      <ol>
+        <li>Save "electronics.jpg" as "electronics.jpg"</li>
+        <li>Save "jewelry.jpg" as "jewelry.jpg"</li>
+        <li>Save "mens-clothing.jpg" as "mens-clothing.jpg"</li>
+        <li>Save "womens-clothing.jpg" as "womens-clothing.jpg"</li>
+        <li>Save "default.jpg" as "default.jpg"</li>
+      </ol>
+      <p>Save all images in the <code>/public/images/categories/</code> directory.</p>
+    </div>
+    
+    <div class="image-container">
+      <h2>electronics.jpg</h2>
+      <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#0077cc"/>
+        <text x="400" y="300" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dominant-baseline="middle">Electronics</text>
+      </svg>
+      <pre>Filename: electronics.jpg</pre>
+    </div>
+    
+    <div class="image-container">
+      <h2>jewelry.jpg</h2>
+      <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#cc7700"/>
+        <text x="400" y="300" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dominant-baseline="middle">Jewelry</text>
+      </svg>
+      <pre>Filename: jewelry.jpg</pre>
+    </div>
+    
+    <div class="image-container">
+      <h2>mens-clothing.jpg</h2>
+      <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#00cc77"/>
+        <text x="400" y="300" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dominant-baseline="middle">Men's Clothing</text>
+      </svg>
+      <pre>Filename: mens-clothing.jpg</pre>
+    </div>
+    
+    <div class="image-container">
+      <h2>womens-clothing.jpg</h2>
+      <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#cc0077"/>
+        <text x="400" y="300" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dominant-baseline="middle">Women's Clothing</text>
+      </svg>
+      <pre>Filename: womens-clothing.jpg</pre>
+    </div>
+    
+    <div class="image-container">
+      <h2>default.jpg</h2>
+      <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#777777"/>
+        <text x="400" y="300" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dominant-baseline="middle">Category</text>
+      </svg>
+      <pre>Filename: default.jpg</pre>
+    </div>
+  </div>
+</body>
+</html> 
